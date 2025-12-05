@@ -6,6 +6,7 @@ import lombok.*;
 @Entity
 @Data
 @Table(name="console")
+class Console {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
