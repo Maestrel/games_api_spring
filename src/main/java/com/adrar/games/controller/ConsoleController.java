@@ -4,10 +4,9 @@ import com.adrar.games.model.Console;
 import com.adrar.games.repository.ConsoleRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -47,5 +46,12 @@ public class ConsoleController {
         }
         //Si la console n'existe pas
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping("/console")
+    public ResponseEntity<Console> saveConsole(@RequestBody Console console)
+    {
+        Console addConsole = consoleRepository.save(console);
+        return new ResponseEntity<>(addConsole, HttpStatus.CREATED);
     }
 }
